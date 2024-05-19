@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+const API = axios.create({ baseURL: `${BACKEND_URL}/api` });
 
 interface RegisterUser {
   firstName: string;
@@ -30,6 +31,3 @@ export interface Property {
 
 export const registerUser = (formData: RegisterUser) => API.post('/auth/register', formData);
 export const loginUser = (formData: LoginUser) => API.post('/auth/login', formData);
-export const createProperty = (propertyData: Property) => API.post('/properties', propertyData);
-export const getProperties = (userid: number) => API.get(`/properties/${userid}`);
-export const getProperty = (id: number) => API.get<Property>(`/properties/${id}`);

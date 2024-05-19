@@ -14,6 +14,7 @@ interface PropertyFormInputs {
     amenities: string;
     price: number;
 }
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 const PostProperty: React.FC = () => {
     const navigate = useNavigate(); // Initialize useNavigate hook
@@ -23,7 +24,7 @@ const PostProperty: React.FC = () => {
     const onSubmit: SubmitHandler<PropertyFormInputs> = async data => {
         const userid = localStorage.getItem('token')
         try {
-            const response = await axios.post(`http://localhost:5000/api/properties/${userid}`, data);
+            const response = await axios.post(`${BACKEND_URL}/api/properties/${userid}`, data);
             console.log('Property posted successfully:', response.data);
             navigate('/seller-dashboard');
         } catch (error) {

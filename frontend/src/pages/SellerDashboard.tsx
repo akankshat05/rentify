@@ -5,12 +5,13 @@ import axios from 'axios';
 import { Button, Card, CardContent, Typography, TextField } from '@mui/material';
 
 Modal.setAppElement('#root');
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function SellerDashboard() {
     const fetchProperties = async () => {
         const userid = localStorage.getItem('token');
         try {
-            const response = await axios.get(`http://localhost:5000/api/properties/${userid}`);
+            const response = await axios.get(`${BACKEND_URL}/api/properties/${userid}`);
             setProperties(response.data);
         } catch (error) {
             console.error('Error fetching properties');
@@ -37,7 +38,7 @@ function SellerDashboard() {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:5000/api/properties/${currentProperty.id}`, {
+            const response = await fetch(`${BACKEND_URL}/api/properties/${currentProperty.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -74,7 +75,7 @@ function SellerDashboard() {
     const deleteProperty = async (id: string) => {
         const userId = localStorage.getItem('token');
         axios
-            .delete(`http://localhost:5000/api/properties/${id}/${userId}`)
+            .delete(`${BACKEND_URL}/api/properties/${id}/${userId}`)
             .then((response: any) => {
                 console.log('Delete request successful');
                 console.log(response.data);

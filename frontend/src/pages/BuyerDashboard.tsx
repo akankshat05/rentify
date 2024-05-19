@@ -5,13 +5,15 @@ import { Card, CardContent, Typography, Button } from '@mui/material'; // Import
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 
 Modal.setAppElement('#root');
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
 function BuyerDashboard() {
     const [properties, setProperties] = useState([]);
 
     useEffect(() => {
         const fetchProperties = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/getAllProperties');
+                const response = await axios.get(`${BACKEND_URL}/api/getAllProperties`);
                 setProperties(response.data);
             } catch (error) {
                 console.error('Error fetching properties');
@@ -25,7 +27,7 @@ function BuyerDashboard() {
 
     const handleInterestedClick = async (sellerid: any) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/getSellerDetails/${sellerid}`);
+            const response = await axios.get(`${BACKEND_URL}/api/getSellerDetails/${sellerid}`);
             setSellerDetails(response.data);
             console.log(response.data);
             setModalIsOpen(true); // Show the modal
