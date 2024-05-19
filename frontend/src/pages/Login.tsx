@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { loginUser } from '../api';
 import { useNavigate } from 'react-router-dom';
-import { TextField, Button, Typography, Link, Box } from '@mui/material';
+import { TextField, Button, Typography, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -52,7 +53,7 @@ function Login() {
           <Button type="submit" variant="contained" color="primary">Login</Button>
         </form>
         <Typography variant="body1" align="center">
-          <Link href="/register">Don't have an account? Register</Link>
+          <Link to="/register">Don't have an account? Register</Link>
         </Typography>
       </Box>
     </Box>

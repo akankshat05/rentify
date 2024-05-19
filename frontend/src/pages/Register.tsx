@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { registerUser } from '../api';
-import { TextField, Button, Typography, Link, Box, MenuItem, FormControl, Select, InputLabel } from '@mui/material';
+import { TextField, Button, Typography, Box, MenuItem, FormControl, Select, InputLabel } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function Register() {
  const [formData, setFormData] = useState({
@@ -60,7 +61,7 @@ function Register() {
           <Button type="submit" variant="contained" color="primary">Register</Button>
         </form>
         <Typography variant="body1" align="center">
-          <Link href="/">Already have an account? Login</Link>
+          <Link to="/">Already have an account? Login</Link>
         </Typography>
       </Box>
     </Box>
