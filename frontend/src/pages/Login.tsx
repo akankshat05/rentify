@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { loginUser } from '../api';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Typography, Link, Box } from '@mui/material';
@@ -11,14 +11,14 @@ function Login() {
     password: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -46,8 +46,8 @@ function SellerDashboard() {
             });
 
             if (response.ok) {
-                setProperties((prevProperties) =>
-                    prevProperties.map((property) =>
+                setProperties((prevProperties: any) =>
+                    prevProperties.map((property: any) =>
                         property.id === currentProperty.id ? currentProperty : property
                     )
                 );
@@ -64,23 +64,23 @@ function SellerDashboard() {
         fetchProperties();
     }, []);
 
-    const confirmDelete = (property) => {
+    const confirmDelete = (property: any) => {
         const confirmDeletion = window.confirm('Are you sure you want to delete this property?');
         if (confirmDeletion) {
             deleteProperty(property.id);
         }
     };
 
-    const deleteProperty = async (id) => {
+    const deleteProperty = async (id: string) => {
         const userId = localStorage.getItem('token');
         axios
             .delete(`http://localhost:5000/api/properties/${id}/${userId}`)
-            .then((response) => {
+            .then((response: any) => {
                 console.log('Delete request successful');
                 console.log(response.data);
                 fetchProperties();
             })
-            .catch((error) => {
+            .catch((error: any) => {
                 console.error('Error deleting resource:', error);
             });
     };
@@ -94,7 +94,7 @@ function SellerDashboard() {
                 </Link>
             </Button>
             {properties &&
-                properties.map((property) => (
+                properties.map((property: any) => (
                     <Card key={property.id} style={{ marginBottom: '20px' }}>
                         <CardContent>
                             <Typography variant="h5" component="h2">

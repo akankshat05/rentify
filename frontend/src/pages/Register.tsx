@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { registerUser } from '../api';
-import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Typography, Link, Box, MenuItem, FormControl, Select, InputLabel } from '@mui/material';
 
 function Register() {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+ const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
@@ -14,14 +12,14 @@ function Register() {
     role: 'buyer' as 'buyer' | 'seller',
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
