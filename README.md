@@ -45,6 +45,6 @@ npm run dev
 
 - Use the following example credentials for login
 ```
-Email - john.doe@example.com", Password - password123 (Buyer)
+Email - john.doe@example.com, Password - password123 (Buyer)
 Email - alice.smith@example.com, Password - abc123 (Seller)
 ```
